@@ -25,6 +25,13 @@ pip install colorama pyfiglet
 
 ## ▶️ How to Run
 
+Clone the repository:
+
+```bash
+git clone https://github.com/GiovanniPiombo/to_do_list.git
+cd to_do_list
+```
+
 To start the app:
 
 ```bash
