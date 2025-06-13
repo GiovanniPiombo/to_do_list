@@ -14,7 +14,7 @@ to_do_list = {
 def add_task():
     os.system('cls' if os.name == 'nt' else 'clear')
     task = input(Fore.WHITE + "Description : ")
-    to_do_list[task] = "not done yet"
+    to_do_list[task] = False
     print(Fore.GREEN + "Task Added!")
     print()
 
@@ -23,7 +23,7 @@ def view_task():
     print(Fore.CYAN + Style.BRIGHT + banner.renderText("To Do List"))
     count = 1
     for task,status in to_do_list.items():
-        if status == "not done yet":
+        if status == False:
             print("❌ "+ Fore.BLUE + str(count) + ". " + Fore.WHITE + task)
         else:
             print("✅ " + Fore.BLUE + str(count) + ". " + Fore.WHITE + task)
@@ -37,7 +37,7 @@ def mark_task():
         try:
             n = int(input("Enter task number to mark as complete: "))
             task = list(to_do_list.keys())[n-1]
-            to_do_list[task] = "done"
+            to_do_list[task] = True
             print(Fore.GREEN + "Task marked as complete!")
             print()
             break
@@ -81,9 +81,10 @@ def main():
         print(Fore.BLUE + "2. "+Fore.YELLOW + "View " + Fore.WHITE + "Task")
         print(Fore.BLUE + "3. "+Fore.YELLOW + "Mark " + Fore.WHITE + "Task")
         print(Fore.BLUE + "4. "+Fore.YELLOW + "Remove " + Fore.WHITE + "Task")
-        print(Fore.BLUE + "5. "+Fore.YELLOW + "Save " + Fore.WHITE + "File")
-        print(Fore.BLUE + "6. "+Fore.YELLOW + "Load " + Fore.WHITE + "File")
-        print(Fore.BLUE + "7. "+Fore.YELLOW + "Exit")
+        print(Fore.BLUE + "5. "+Fore.YELLOW + "Sort " + Fore.WHITE + "Task")
+        print(Fore.BLUE + "6. "+Fore.YELLOW + "Save " + Fore.WHITE + "File")
+        print(Fore.BLUE + "7. "+Fore.YELLOW + "Load " + Fore.WHITE + "File")
+        print(Fore.BLUE + "8. "+Fore.YELLOW + "Exit")
         option = input("Choose an option : ")
         if(option == "1"):
             add_task()
@@ -94,12 +95,31 @@ def main():
         elif(option == "4"):
             remove_task()
         elif(option == "5"):
-            save()
+            sort()
         elif(option == "6"):
-            load()
+            save()
         elif(option == "7"):
+            load()
+        elif(option == "8"):
             break
         else:
             print("Invalid Input!")
 
+def sort():
+    print("How would you like to sort the list?")
+    print("1. ✅ Show completed first")
+    print("2. ❌ Show not completed first")
+    while(True):
+        sorting = input("Sorting Type :")
+        if(sorting == "1"):
+            sorted_items = sorted(to_do_list.items(), key=lambda x: x[1], reverse=True)
+            break
+        elif(sorting == "2"):
+            sorted_items = sorted(to_do_list.items(), key=lambda x: x[1])
+            break
+        else:
+            print("Invalid Input")
+    to_do_list.clear()
+    to_do_list.update(sorted_items)
+                
 main()
