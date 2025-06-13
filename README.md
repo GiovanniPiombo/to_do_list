@@ -49,8 +49,8 @@ Tasks are stored as key/value pairs in a Python dictionary:
 
 ```python
 {
-    "Buy milk": "not done yet",
-    "Study Python": "done"
+    "Buy milk": False,
+    "Study Python": True
 }
 ```
 
