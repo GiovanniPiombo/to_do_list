@@ -56,7 +56,6 @@ Tasks are stored as key/value pairs in a Python dictionary:
 
 ## 🛠️ Future Improvements (Ideas)
 
-- Task sorting
 - GUI version
 - Task priorities and due dates
 - Auto-backup system
