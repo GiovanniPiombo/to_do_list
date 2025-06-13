@@ -1,10 +1,3 @@
-"""
-1. Add task
-2. View tasks
-3. Mark task as completed
-4. Delete task
-5. Exit
-"""
 import os
 from colorama import init, Fore, Style
 from pyfiglet import Figlet
